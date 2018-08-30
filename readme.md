@@ -17,7 +17,7 @@
 
 <img src="https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/assets/templating.png" width="300" height="188" />
 
-静态博客的原理，就如同这篇教程，我创作时，写的是 markdown 文件（[readme.md](https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/manual.md)），但你看到的确实是带有格式和交互的网页。因为这背后，有 GitHub 在帮我完成了从静态 markdown 到静态 HTML 的转换。
+静态博客的原理，就如同这篇教程，我创作时，写的是 markdown 文件（[readme.md](https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/readme.md)），但你看到的确实是带有格式和交互的网页。因为这背后，有 GitHub 在帮我完成了从静态 markdown 到静态 HTML 的转换。
 
 如果要搭建一个静态博客，我们需要的工具有：
 
@@ -27,15 +27,26 @@
 
 常用的静态网站生成工具有 [jekyll](https://jekyllrb.com/), [hexo](https://hexo.io/) 和 [hugo](https://gohugo.io/) 等。
 
-接下来，我以 hugo 的使用为例介绍如何搭建一个静态博客。
+接下来，我以 hugo 的使用为例介绍如何搭建一个静态博客。在开始之前，先打个预防针：其实步骤并不繁琐，其中大部分工作只需要做一次；另外，也无需担心太有技术含量，因为下面所述的各个步骤都是很简单的操作，只要有简单的电脑操作技能，都可以学会。
 
-## 安装配置 hugo
+## 准备：安装 hugo
 
 仅需操作一次。
 
-(todo)
+按照官方给定的 [安装 hugo 教程](https://gohugo.io/getting-started/installing/) 操作是十分简单的：
 
-按照官方给定的 [安装 hugo 教程](https://gohugo.io/getting-started/installing/) 操作是十分简单的。
+1. 打开电脑上的终端（Windows 上的`命令提示符`，或 macOS 上的 `Terminal`）
+1. 如果是在 Windows 上，先[安装 Chocolatey](https://chocolatey.org/install)，然后重启命令提示符窗口
+1. 输入相应的安装命令即可（Windows 上用 `choco install hugo`，macOS 上用 `brew install hugo`）
+
+完成之后，确保你能够从命令行中运行 `hugo version` 命令，并看到如下输出：
+
+```sh
+# hugo version
+Hugo Static Site Generator v0.40.1 darwin/amd64 BuildDate:
+```
+
+到此时，你的 hugo 就安装成功了。
 
 ## 准备：初始化工作空间
 
