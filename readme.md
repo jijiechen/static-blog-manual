@@ -13,15 +13,15 @@
 
 ## 静态博客系统
 
-所谓静态博客系统指的是，博客网站是由一系列的静态 HTML 文件，以及对应的多媒体素材等组成，只要找一个可以存储文件的平台即可发布网站。有许多工具，可以把一篇篇博客文章的 markdown 文件，配上博客主题之后转换为可以直接发布的 HTML 文件。
+所谓静态博客系统指的是，博客网站是由一系列的静态 HTML 文件，以及对应的多媒体素材等组成，只要找一个可以存储文件的平台即可发布网站。有许多工具，可以把一篇篇博客文章的 Markdown 文件，配上博客主题之后转换为可以直接发布的 HTML 文件。
 
 <img src="https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/assets/templating.png" width="300" height="188" />
 
-静态博客系统的原理，就如同这篇教程，我创作时，写的是 markdown 文件（[readme.md](https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/readme.md)），但你看到的确实是带有格式和交互的网页。因为这背后，有 GitHub 在帮我完成了从静态 markdown 到静态 HTML 的转换。
+静态博客系统的原理，就如同这篇教程，我创作时，写的是 Markdown 文件（[readme.md](https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/readme.md)），但你看到的确实是带有格式和交互的网页。因为这背后，有 GitHub 在帮我完成了从静态 Markdown 到静态 HTML 的转换。
 
 如果要搭建一个静态博客网站，我们需要的工具有：
 
-* 把 markdown 转化为 HTML 的工具（即静态网站生成工具）
+* 把 Markdown 转化为 HTML 的工具（即静态网站生成工具）
 * 博客样式主题（通常与工具是配套的，一般来说找到了生成工具就找到了主题）
 * 能存储和发布静态文件的平台
 
@@ -50,7 +50,7 @@ Hugo Static Site Generator v0.40.1 darwin/amd64 BuildDate:
 
 到此时，你的 hugo 就安装成功了。
 
-## 准备：初始化工作空间
+## 准备：创建新的博客网站
 
 仅需操作一次。
 
@@ -131,17 +131,56 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 ```
 
+可以[从这里查看完整的命令行操作步骤](https://gohugo.io/getting-started/quick-start/#recapitulation)：从安装 hugo，到预览网站的整个过程。
+
 ## 开始创作
 
-以后每次添加新文章时，都重复。
+以后每次添加新文章时，都执行这些操作。
 
-(todo)
+网站建好了之后，终于可以愉快地写作了，相信你盼这一刻已经很久了。创作新文章，就是添加新的 Markdown 文件，是不是很简单？
 
-现在终于
-
-* 在 `content` 目录，编写你的内容文件（.md）。
+* 打开命令行环境，切换工作目录到网站目录
+* 在 `content` 目录，编写你的内容文件
 * 使用 hugo serve 在本地预览你的博客网站（http://localhost:1313）
 
+```ps
+cd myblog
+mkdir content/posts   # 本句仅需运行一次
+
+# 如果是 Windows，请在 PowerShell 中执行此语句创建内容
+New-Item -Type file content/posts/my-first-post.md
+
+# 如果是 macOS 系统，执行此语句创建内容
+touch content/posts/my-first-post.md
+```
+
+接下来再用喜欢的编辑器编辑新创建的 Markdown 文件即可。hugo 支持在 Markdown 顶部声明一些文章的基本信息，比如标题、创建时间等。下面就是一篇文章的 Markdown 内容示例：
+
+```
+---
+title: "我的第一篇文章的标题"
+date: 2018-08-31T18:35:00+08:00
+draft: false
+categories: ["Software Project" ]
+tags: ["博客", "网站", "hugo" ]
+isCJKLanguage: true
+---
+
+在最前面的基本信息之后的所有内容，都是文章的正文部分。正文部分支持使用 Markdown 语法。比如可以[添加外链](https://github.com/)，以及**加粗文字**等。
+```
+
+可以去 hugo 的网站了解更多[页面基本信息](https://gohugo.io/content-management/front-matter/)和[内容语法介绍](https://gohugo.io/content-management/formats/)，以及教程信息。
+
+上面我们创建的内容是`博客文章`的类型，这种内容一经创建就会自动出现在网站首页的最新文章列表中。除此之外，我们还可以创建一些不被统计入目录的`页面`。只需要在上面创建内容文件时，指定目录为 `content/pages` 开头即可，而页面的内容仍然是以 Markdown 格式描述的。
+
+如果需要在文章中插入图片、音视频等多媒体资源，可以在网站目录下的 `static` 下创建一个专用的目录（如 `static/assets`）。在需要往文章中插入图片时，只需要把图片放在这个目录中，并且在 Markdown 中插入相对路径（不包含 `static` 前缀）即可。
+
+```ps
+mkdir static/assets
+cp /path/to/image.jpg static/assets/
+# 在 Markdown 中插入图片：（正文图片链接）(大图链接)
+# [![图片标题](/assets/image.jpg "图片标题")](/assets/image.jpg)
+```
 
 ## 发布博客网站
 
