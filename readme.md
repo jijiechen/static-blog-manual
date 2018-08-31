@@ -188,7 +188,7 @@ cp /path/to/image.jpg static/assets/
 
 <br />
 
-## 发布博客网站
+## 发布你的网站
 
 *注册过程仅需操作一次。以后每次要发布新文章时，都重复发布流程。*
 
@@ -231,10 +231,10 @@ cd ..
 如果一切顺利、推送完成之后，稍等片刻，就可以从公网访问你的网站了：http://user-name.github.io 接下来你就可以与朋友们分享你的新网站了。每次发布网站时都需要输入这一系列的命令，显得很繁琐。可以[下载这个脚本文件](https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/assets/publish.bat)，放到博客网站的目录下面，以后每次只需要执行 `./publish` 即可完成发布了。不过，使用这个脚本前，稍微注意几点：
 
 1. 第一次发布时，仍需要手动执行上面的命令行
-2. 在 macOS 系统上，请将上述文件保存为不带扩展名的文件
+2. 在 macOS 系统上，请将上述文件保存为不带扩展名的文件，并删除其第一行和第二的 *rem* 前缀 
 3. 在 macOS 系统上，请使用 `chmod +x ./publish` 为脚本文件添加可执行权限
 
-除了 GitHub pages，也可以使用国内的 [Coding.net Pages 服务](https://pages.coding.me/)，注册和发布的操作过程与 GitHub pages 大同小异。Coding.net 静态页面服务与 GitHub pages 功能类似，但在国内的访问速度要快得多。
+除了 GitHub pages，也可以使用国内的 [Coding.net Pages](https://pages.coding.me/)，注册和发布的操作过程与 GitHub pages 大同小异。Coding.net 静态页面服务与 GitHub pages 功能类似，但在国内的访问速度要快得多。
 
 为了确保你发布的内容是正确无误的，防止将重要的资料发到互联网，每次在发布之前，可以手动执行 `hugo -t <主题名称>` 并切换到 `public` 目录用 `git diff` 命令查看接下来要发布到网上的的内容。
 
