@@ -11,6 +11,8 @@
 
 最常见的博客系统 WordPress 是一款动态博客系统（PHP 程序），这类系统需要在云主机商（如阿里云）那里买专门的空间或来存储和发布（存储并运行 PHP 程序）我们的博客网站。
 
+<br />
+
 ## 静态博客系统
 
 所谓静态博客系统指的是，博客网站是由一系列的静态 HTML 文件，以及对应的多媒体素材等组成，只要找一个可以存储文件的平台即可发布网站。有许多工具，可以把一篇篇博客文章的 Markdown 文件，配上博客主题之后转换为可以直接发布的 HTML 文件。
@@ -31,9 +33,11 @@
 
 另外，整个过程会不会太折腾？其实下面的过程与安装一个 WordPress 动态博客系统相比，大体难度是相当的；但考虑到动态博客系统每年大概需要几百块的成本，后续还需要时不时的维护（比如版本升级、打补丁，数据备份等），其实静态博客的成本主要在第一次的安装和配置期间，在下面的“扩展”部分之前，一共大概只需要花 2 小时左右。
 
+<br />
+
 ## 准备：安装 hugo
 
-仅需操作一次。
+*仅需操作一次。*
 
 按照官方给定的[安装 hugo 教程](https://gohugo.io/getting-started/installing/)操作是十分简单的：
 
@@ -50,9 +54,11 @@ Hugo Static Site Generator v0.40.1 darwin/amd64 BuildDate:
 
 到此时，你的 hugo 就安装成功了。
 
+<br />
+
 ## 准备：创建新的博客网站
 
-仅需操作一次。
+*仅需操作一次。*
 
 接下来我们用 `hugo new site myblog` 创建新的网站 myblog，这里以后将你以后创作内容和修葺网站的地方。
 
@@ -74,9 +80,11 @@ Visit https://gohugo.io/ for quickstart guide and full documentation.
 
 新创建好的网站不包含任何内容，所以我们需要根据屏幕上的提示去下载一个主题。
 
+<br />
+
 ## 准备：定制你的主题
 
-仅需操作一次。
+*仅需操作一次。*
 
 用浏览器打开转到 [hugo 的主题网站](https://themes.gohugo.io/)，挑选一个喜欢的主题后，在该主题的界面上，要注意你的 hugo 版本是否能够满足它要求的 `Minimum Hugo Version`。如果没问题，就可以继续，点击 `Download` 会转到主题的 GitHub 网站。一般来说，可以先切换到 `releases` 页面去看看有没有发布版。如果有，就可以换一个最新的发布版本下载下来；如果没有，就在网页上点击 `Clone or download`，下面有一个 `download as zip`，即以 zip 文件的方式下载。
 
@@ -133,14 +141,16 @@ Press Ctrl+C to stop
 
 可以[从这里查看完整的命令行操作步骤](https://gohugo.io/getting-started/quick-start/#recapitulation)：从安装 hugo，到预览网站的整个过程。
 
+<br />
+
 ## 开始创作
 
-以后每次添加新文章时，都执行这些操作。
+*以后每次添加新文章时，都执行这些操作。*
 
 网站建好了之后，终于可以愉快地写作了，相信你盼这一刻已经很久了。创作新文章，就是添加新的 Markdown 文件，是不是很简单？
 
 * 打开命令行环境，切换工作目录到网站目录
-* 在 `content` 目录，编写你的内容文件
+* 在 `content` 目录，添加并编辑新的 Markdown 内容文件
 * 使用 hugo serve 在本地预览你的博客网站（http://localhost:1313）
 
 ```ps
@@ -158,11 +168,11 @@ touch content/posts/my-first-post.md
 
 ```
 ---
-title: "我的第一篇文章的标题"
+title: "文章的标题"
 date: 2018-08-31T18:35:00+08:00
 draft: false
 categories: ["Software Project" ]
-tags: ["博客", "网站", "hugo" ]
+tags: ["博客", "网站", "hugo" ]
 isCJKLanguage: true
 ---
 
@@ -175,31 +185,66 @@ isCJKLanguage: true
 
 如果需要在文章中插入图片、音视频等多媒体资源，可以在网站目录下的 `static` 下创建一个专用的目录（如 `static/assets`）。在需要往文章中插入图片时，只需要把图片放在这个目录中，并且在 Markdown 中插入相对路径（不包含 `static` 前缀）即可。
 
+文章编辑期间，可以执行 `hugo server` 命令在本地启动 hugo 预览服务。然后在浏览器中打开新创建的文章，将能即时预览文章最新的效果。
+
 ```ps
 mkdir static/assets
 cp /path/to/image.jpg static/assets/
+
 # 在 Markdown 中插入图片：（正文图片链接）(大图链接)
 # [![图片标题](/assets/image.jpg "图片标题")](/assets/image.jpg)
 ```
 
+<br />
+
 ## 发布博客网站
 
-注册过程仅需操作一次。以后每次添加发布文章时，都重复发布过程。
+*注册过程仅需操作一次。以后每次要发布新文章时，都重复发布过程即可。*
 
-(todo)
+当大作初成，我想你已经迫不急待地想要把你的作品呈现在世人面前了，因为截止目前，你的网站还只在自己电脑上，不能供互联网上的众人阅览。为了将网站发布到网上，大致需要这两个步骤：
 
-在 coding pages，或者 github pages 上发布你的博客网站。
+1. 去专门提供存储的网站注册一个账号
+2. 在自己电脑上编译我们的博客网站，并把生成好内容打包上传
 
-在网站上注册好之后，只要一个 git push 就可以完成网站的发布。
+一般来说这种存储网站（例如七牛云存储）都是收费的，接下来我们看一下如何使用 [GitHub Pages](https://pages.github.com/) 的免费托管服务存储我们的网站。
 
-### 扩展：用 Git 记录变更历史
+1. 首先，[注册一个 GitHub 账号](https://github.com/join)，假如用户名为 *user-name*
+2. 接着，[创建一个仓库（Repository）](https://github.com/new)，请使用 `user-name.github.io` 作为仓库的名字。注意，这个名字的第一个部分就是你的用户名，不要写错了。创建仓库界面上其他各项均按默认填写即可。
+3. 仓库创建完成之后，你将获得一个仓库的 URL，类似这样：*https://github.com/user-name/user-name.github.io.git*
 
-### 扩展：用自己的域名
+上面的注册过程完成之后，就可以从浏览器中回到控制台中开始发布网站了。下面的手工操作首先将网站进行一次编译，然后将编译后的网站创建为一个 Git 项目，这样才可以被发布到 GitHub 网站上。
 
-### 扩展：为网站备案
+1. 在命令行环境，切换工作目录到博客网站，使用 hugo 命令编译网站
+2. 把编译好的网站创建为 Git 项目
+3. 将最新的网站推送到 GitHub 服务器上
 
-### 扩展：为博客网站启用 HTTPS
+对应的命令行指令是：
 
-### 扩展：为网站启用统计功能
+```ps
+cd myblog
+hugo -t hyde  # 注意，把最后一个参数换成你的主题的名字
 
-### 扩展：为网站添加评论
+cd public
+git init
+git remote add origin https://github.com/user-name/user-name.github.io.git   # 注意，把其中的 user-name 换成你的 GitHub 用户名
+
+git add --all 
+git commit -m "Publishing to gh-pages"
+git push origin master --set-upstream  # 你会被询问 GitHub 用户名和密码
+
+# 发布完成，回到上层目录（可以继续写作啦）
+cd ..
+```
+
+如果一切顺利、推送完成之后，稍等片刻，就可以从公网访问你的网站了：http://user-name.github.io，接下来你就可以与朋友们分享你的新网站了。如果觉得每次在发布时都需要输入这一系列的命令，显得很繁琐的话，可以[下载这个脚本文件](https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/assets/publish.bat)，放到博客网站的目录下面，以后每次只需要执行 `./publish` 即可完成发布了。不过，使用这个脚本时，稍微注意几点：
+
+1. 第一次发布时，仍需要手动执行使用上面的过程
+2. 如果你使用 macOS 系统，请将上述文件保存为不带扩展名的文件
+3. 如果你使用 macOS 系统，请使用 `chmod +x ./publish` 为它添加可执行权限
+
+除了 GitHub pages，也可以使用国内的 [Coding.net](https://pages.coding.me/)，注册和发布的操作过程与 GitHub pages 大同小异。Coding.net 静态页面服务与 GitHub pages 功能类似，但在国内的访问速度要快得多。
+
+<br />
+
+关于为网站使用自定义域名、统计、评论等功能，请转到 [扩展话题](https://github.com/jijiechen/static-blog-manual/blob/master/extensions.md) 目前仍在持续更新中。
+
