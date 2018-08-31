@@ -31,7 +31,7 @@
 
 在开始之前，先打个预防针：其实步骤并不繁琐，其中大部分工作只需要做一次；另外，也无需担心太有技术含量，因为下面所述的各个步骤都是很简单的操作，只要有简单的电脑操作技能，都可以学会。
 
-另外，整个过程会不会太折腾？其实下面的过程与安装一个 WordPress 动态博客系统相比，大体难度是相当的；但考虑到动态博客系统每年大概需要几百块的成本，后续还需要时不时的维护（比如版本升级、打补丁，数据备份等），其实静态博客的成本主要在第一次的安装和配置期间，在下面的“扩展”部分之前，一共大概只需要花 2 小时左右。
+另外，整个过程会不会太折腾？其实下面的过程与安装一个 WordPress 动态博客系统相比，大体难度是相当的；但考虑到动态博客系统每年大概需要几百块的成本，后续还需要时不时的维护（比如版本升级、打补丁，数据备份等），其实静态博客的成本主要在第一次的安装和配置期间，实际上在“扩展”话题之前，一共大概只需要 2 小时左右。
 
 <br />
 
@@ -65,16 +65,7 @@ Hugo Static Site Generator v0.40.1 darwin/amd64 BuildDate:
 ```
 # hugo new site myblog
 Congratulations! Your new Hugo site is created in /path/to/myblog.
-
-Just a few more steps and you're ready to go:
-
-1. Download a theme into the same-named folder.
-   Choose a theme from https://themes.gohugo.io/, or
-   create your own with the "hugo new theme <THEMENAME>" command.
-2. Perhaps you want to add some content. You can add single files
-   with "hugo new <SECTIONNAME>/<FILENAME>.<FORMAT>".
-3. Start the built-in live server via "hugo server".
-
+...
 Visit https://gohugo.io/ for quickstart guide and full documentation.
 ```
 
@@ -183,9 +174,9 @@ isCJKLanguage: true
 
 上面我们创建的内容是`博客文章`的类型，这种内容一经创建就会自动出现在网站首页的最新文章列表中。除此之外，我们还可以创建一些不被统计入目录的`页面`。只需要在上面创建内容文件时，指定目录为 `content/pages` 开头即可，而页面的内容仍然是以 Markdown 格式描述的。
 
-如果需要在文章中插入图片、音视频等多媒体资源，可以在网站目录下的 `static` 下创建一个专用的目录（如 `static/assets`）。在需要往文章中插入图片时，只需要把图片放在这个目录中，并且在 Markdown 中插入相对路径（不包含 `static` 前缀）即可。
+如果需要在文章中插入图片、音视频等多媒体资源，可以在网站目录下的 `static` 下创建一个专用的目录（如 `static/assets`）。在需要往文章中插入图片时，只需要把图片放在这个目录中，并且在 Markdown 中插入相对路径即可（不包含 `static` 前缀）。
 
-文章编辑期间，可以执行 `hugo server` 命令在本地启动 hugo 预览服务。然后在浏览器中打开新创建的文章，将能即时预览文章最新的效果。
+在文章编辑期间，可以执行 `hugo server` 命令在本地启动预览，然后在浏览器中打开新创建的文章，能即时查看文章的效果。
 
 ```ps
 mkdir static/assets
@@ -199,23 +190,23 @@ cp /path/to/image.jpg static/assets/
 
 ## 发布博客网站
 
-*注册过程仅需操作一次。以后每次要发布新文章时，都重复发布过程即可。*
+*注册过程仅需操作一次。以后每次要发布新文章时，都重复发布流程。*
 
-当大作初成，我想你已经迫不急待地想要把你的作品呈现在世人面前了，因为截止目前，你的网站还只在自己电脑上，不能供互联网上的众人阅览。为了将网站发布到网上，大致需要这两个步骤：
+当大作初成，我想你已经迫不急待地想要把你的作品呈现在世人面前了，截止目前，你的网站还只在自己电脑上，不能供互联网上的众人阅览。为了将网站发布到网上，大致需要这两个步骤：
 
 1. 去专门提供存储的网站注册一个账号
-2. 在自己电脑上编译我们的博客网站，并把生成好内容打包上传
+2. 在自己电脑上编译博客网站，并把生成好内容打包上传
 
-一般来说这种存储网站（例如七牛云存储）都是收费的，接下来我们看一下如何使用 [GitHub Pages](https://pages.github.com/) 的免费托管服务存储我们的网站。
+一般来说这种存储网站（如七牛存储）都要收费，接下来我们看一下如何使用 [GitHub Pages](https://pages.github.com/) 的免费托管服务存储你的网站。
 
 1. 首先，[注册一个 GitHub 账号](https://github.com/join)，假如用户名为 *user-name*
-2. 接着，[创建一个仓库（Repository）](https://github.com/new)，请使用 `user-name.github.io` 作为仓库的名字。注意，这个名字的第一个部分就是你的用户名，不要写错了。创建仓库界面上其他各项均按默认填写即可。
+2. 接着，[创建一个仓库（Repository）](https://github.com/new)，请使用 `user-name.github.io` 作为仓库的名字。注意，这个名字的第一个部分就是你的用户名，不要写错了。创建仓库界面上其他各项均默认
 3. 仓库创建完成之后，你将获得一个仓库的 URL，类似这样：*https://github.com/user-name/user-name.github.io.git*
 
-上面的注册过程完成之后，就可以从浏览器中回到控制台中开始发布网站了。下面的手工操作首先将网站进行一次编译，然后将编译后的网站创建为一个 Git 项目，这样才可以被发布到 GitHub 网站上。
+上面的注册过程完成之后，就可以从浏览器中回到控制台中开始发布网站了。下面的手工操作首先对网站进行一次编译，然后将编译后的网站创建为一个 Git 项目，这样才可以被发布到 GitHub 网站上。
 
 1. 在命令行环境，切换工作目录到博客网站，使用 hugo 命令编译网站
-2. 把编译好的网站创建为 Git 项目
+2. 把编译好的网站创建为 Git 项目（在 Windows 上，如果还没有安装 Git 的话，按下面命令行中的注释执行安装）
 3. 将最新的网站推送到 GitHub 服务器上
 
 对应的命令行指令是：
@@ -225,6 +216,7 @@ cd myblog
 hugo -t hyde  # 注意，把最后一个参数换成你的主题的名字
 
 cd public
+# choco install git  # 在 Windows 上，如果还没有安装 Git 的话，请执行此句来安装 Git
 git init
 git remote add origin https://github.com/user-name/user-name.github.io.git   # 注意，把其中的 user-name 换成你的 GitHub 用户名
 
@@ -236,13 +228,15 @@ git push origin master --set-upstream  # 你会被询问 GitHub 用户名和密�
 cd ..
 ```
 
-如果一切顺利、推送完成之后，稍等片刻，就可以从公网访问你的网站了：http://user-name.github.io，接下来你就可以与朋友们分享你的新网站了。如果觉得每次在发布时都需要输入这一系列的命令，显得很繁琐的话，可以[下载这个脚本文件](https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/assets/publish.bat)，放到博客网站的目录下面，以后每次只需要执行 `./publish` 即可完成发布了。不过，使用这个脚本时，稍微注意几点：
+如果一切顺利、推送完成之后，稍等片刻，就可以从公网访问你的网站了：http://user-name.github.io 接下来你就可以与朋友们分享你的新网站了。每次发布网站时都需要输入这一系列的命令，显得很繁琐。可以[下载这个脚本文件](https://raw.githubusercontent.com/jijiechen/static-blog-manual/master/assets/publish.bat)，放到博客网站的目录下面，以后每次只需要执行 `./publish` 即可完成发布了。不过，使用这个脚本前，稍微注意几点：
 
-1. 第一次发布时，仍需要手动执行使用上面的过程
-2. 如果你使用 macOS 系统，请将上述文件保存为不带扩展名的文件
-3. 如果你使用 macOS 系统，请使用 `chmod +x ./publish` 为它添加可执行权限
+1. 第一次发布时，仍需要手动执行上面的命令行
+2. 在 macOS 系统上，请将上述文件保存为不带扩展名的文件
+3. 在 macOS 系统上，请使用 `chmod +x ./publish` 为脚本文件添加可执行权限
 
-除了 GitHub pages，也可以使用国内的 [Coding.net](https://pages.coding.me/)，注册和发布的操作过程与 GitHub pages 大同小异。Coding.net 静态页面服务与 GitHub pages 功能类似，但在国内的访问速度要快得多。
+除了 GitHub pages，也可以使用国内的 [Coding.net Pages 服务](https://pages.coding.me/)，注册和发布的操作过程与 GitHub pages 大同小异。Coding.net 静态页面服务与 GitHub pages 功能类似，但在国内的访问速度要快得多。
+
+为了确保你发布的内容是正确无误的，防止将重要的资料发到互联网，每次在发布之前，可以手动执行 `hugo -t <主题名称>` 并切换到 `public` 目录用 `git diff` 命令查看接下来要发布到网上的的内容。
 
 <br />
 
